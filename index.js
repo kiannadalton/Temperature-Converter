@@ -1,3 +1,4 @@
+// This is my second time completing this item, as a I relearn JavaScript.
 // Complete the following functions to make our program work!
 
 /**
@@ -6,9 +7,11 @@
  * @returns {number} the number of degrees C
  */
 function convertToCelsius(fahren) {
-    return (fahren - 32) * (5/9)
+  return Math.round((fahren - 32) * (5 / 9));
 }
 
+// above function works per below console.log
+// console.log(convertToCelsius(60));
 
 /**
  * Takes both numbers (F, C) and display a message with
@@ -26,23 +29,19 @@ function convertToCelsius(fahren) {
  * @param {number} celc
  */
 function createMessage(fahren, celc) {
-    let message = '';
-    const numFahren = fahren * 1;
+  message = "";
 
-    if(numFahren < 32) {
-        message = 'very cold'
-    } else if(numFahren > 32 && numFahren < 64) {
-        message = 'cold';
-    } else if(numFahren > 64 && numFahren < 86) {
-        message = 'warm';
-    } else if(numFahren > 86 && numFahren < 100) {
-        message = 'hot';
-    } else if(numFahren > 100) {
-        message = 'heat stroke';
-    }
+  if (fahren < 32) {
+    message = `The temperature is ${fahren} Fahrenheit and ${celc} Celcius. Wear a coat--it's very cold!`;
+  } else if (fahren < 64 && fahren > 31) {
+    message = `The temperature is ${fahren} Fahrenheit and ${celc} Celcius. Wear a jacket--it's cold outside!`;
+  } else if (fahren < 86 && fahren > 63) {
+    message = `The temperature is ${fahren} Fahrenheit and ${celc} Celcius. Wear something breezy--it's warm out there!`;
+  } else {
+    message = `The temperature is ${fahren} Fahrenheit and ${celc} Celcius. Stay inside, it's way too hot.`;
+  }
 
-    return `${fahren} fahren is ${celc} celsius. ${message}`;
-
+  return message;
 }
 
 /**
@@ -51,32 +50,31 @@ function createMessage(fahren, celc) {
  * @returns {number} a number between 0 and the int passed in
  */
 function rand(limit) {
-    return Math.round(Math.random() * 100);
+  return Math.floor(Math.random() * limit);
 }
 
-
-
 // -------------------- DO NOT CHANGE THE CODE BELOW ---------------------- //
+
 let fahren = prompt(
-    "enter a number, we will convert that number from fahrenheit to celcius"
-  );
-  let celc = convertToCelsius(fahren);
-  let output = createMessage(fahren, celc);
-  console.log(output);
-  if (!fahren || !celc) {
-    fahren = prompt(
-      "Lets try that again. enter a number, we will convert that number from fahrenheit to celcius"
-    );
-    celc = convertToCelsius(fahren);
-    output = createMessage(fahren, celc);
-    console.log(output);
-    fahren = rand(110);
-    celc = convertToCelsius(fahren);
-    output = createMessage(fahren, celc);
-    console.log(output);
-  } else {
-    fahren = rand(110);
-    celc = convertToCelsius(fahren);
-    output = createMessage(fahren, celc);
-    console.log(output);
-  }
+  "enter a number, we will convert that number from fahrenheit to celcius"
+);
+let celc = convertToCelsius(fahren);
+let output = createMessage(fahren, celc);
+console.log(output);
+
+fahren = prompt(
+  "Lets try that again. enter a number, we will convert that number from fahrenheit to celcius"
+);
+celc = convertToCelsius(fahren);
+output = createMessage(fahren, celc);
+console.log(output);
+
+fahren = rand(110);
+celc = convertToCelsius(fahren);
+output = createMessage(fahren, celc);
+console.log(output);
+
+fahren = rand(110);
+celc = convertToCelsius(fahren);
+output = createMessage(fahren, celc);
+console.log(output);
